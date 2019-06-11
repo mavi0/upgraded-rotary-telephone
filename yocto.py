@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, time, json
 sys.path.append(os.path.join("..", "..", "Sources"))
 from yoctopuce.yocto_api import *
 from yoctopuce.yocto_voltage import *
@@ -29,6 +29,18 @@ if not (sensorDC.isOnline()):
     die('device not connected')
 
 if sensorDC.isOnline():
-    print("%3.2fV DC - %3.2fV AC " % (sensorDC.get_currentValue(), sensorAC.get_currentValue()))
+    dc = sensorDC.get_currentValue()
+    ac = sensorAC.get_currentValue()
+    print("%3.2fV DC - %3.2fV AC " % (dc, ac))
+    print(dc)
+    time = time.time()
+    voltage = {}
+    voltage = { "VDC" : dc, "VAC" : ac}
+    print(voltage)
+    with open('voltage.json', 'w') as volt_file:
+        json.dump(voltage, volt_file)
+
+    with open('voltageLogs/%s.json' % time, 'w') as volt_file:
+        json.dump(voltage, volt_file)
     
 YAPI.FreeAPI()

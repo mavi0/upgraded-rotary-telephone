@@ -1,0 +1,2 @@
+*/10 * * * * cd /home/arisaie/upgraded-rotary-telephone && bash main.sh 2>&1 | tee log.txt
+
