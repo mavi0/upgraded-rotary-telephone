@@ -32,7 +32,7 @@ print(json.dumps(ping_json_hostname))
 with open('ping.json' , 'w') as ping_file:
     json.dump(ping_json_hostname, ping_file)
 
-# with open('pingLogs/%s.json' % time, 'w') as ping_log:
-#     json.dump(ping_json_hostname, ping_log)
+with open('pingLogs/%s.json' % time, 'w') as ping_log:
+    json.dump(ping_json_hostname, ping_log)
 
 logging.info("Complete!\n")

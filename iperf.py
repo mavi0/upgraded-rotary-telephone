@@ -50,11 +50,12 @@ def iperf( port ):
         print(json.dumps(result.json))
         logging.info("Test Complete!")
 
+        with open('iperf.json', 'w') as iperf_file:
+            json.dump(result.json, iperf_file)
+
         with open('iperfLogs/%s.json' % time, 'w') as iperf_log:
             json.dump(result.json, iperf_log)
 
-        with open('iperf.json' % time, 'w') as iperf_log:
-            json.dump(result.json, iperf_log)
 
 
 iperf(base_port)
