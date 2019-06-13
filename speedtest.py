@@ -21,7 +21,7 @@ server_hostname = config['DEFAULT']['Hostname']
 
 logging.info("Performing Speedtest.net test....")
 
-speedtest_json = json.loads(check_output(["speedtest-cli", "--json"]))
+speedtest_json = json.loads(check_output(["speedtest-cli", "--json"]).decode("utf-8"))
 
 with open('speedtest.json' , 'w') as speedtest_file:
         json.dump(speedtest_json, speedtest_file)
