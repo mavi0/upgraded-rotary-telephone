@@ -21,7 +21,7 @@ base_port = int(config['DEFAULT']['Port'])
 server_hostname = config['DEFAULT']['Hostname']
 
 logging.info("Performing latency test....")
-ping_json = json.loads(check_output(["pingparsing", server_hostname]))
+ping_json = json.loads(check_output(["pingparsing", server_hostname]).decode("utf-8"))
 ping_json[server_hostname]['jitter'] = ping_json[server_hostname]["rtt_max"] - ping_json[server_hostname]["rtt_min"]
 json_hostname = server_hostname.replace(".", "_")                        #fix for zabbix. cant escape periods
 ping_json_hostname = {}
