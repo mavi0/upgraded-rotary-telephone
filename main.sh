@@ -5,3 +5,4 @@ python3 iperf.py
 python3 ping.py
 python3 speedtest.py
 python yocto.py
+python3 send.py

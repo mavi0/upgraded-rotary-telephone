@@ -14,9 +14,9 @@ wget wget https://repo.zabbix.com/zabbix/4.0/raspbian/pool/main/z/zabbix-release
 sudo dpkg -i zabbix-release_4.0-2+bionic_all.deb
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y python3 python iperf3 python-pip python3-pip speedtest-cli golang-go autossh moreutils openvpn zabbix-agent
-pip3 install iperf3 pingparsing
-pip install yoctopuce
+sudo apt install -y python3 python iperf3 python-pip python3-pip speedtest-cli golang-go autossh moreutils openvpn zabbix-agent git
+sudo pip3 install iperf3 pingparsing jsonmerge
+sudo pip install yoctopuce
 
 ## SSH setup
 echo -e "\e[33mSetting up SSH config \e[39m"
@@ -93,7 +93,7 @@ wget "$1:5000/clone/zabbix_agentd.conf"
 
 sed -i "150s/.*/Hostname=$HOSTNAME/" zabbix_agentd.conf
 
-sudo cp -v zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf
+sudo cp -v zabbix_agentd.conf /etc/zaybbix/zabbix_agentd.conf
 sudo systemctl enable zabbix-agent
 sudo systemctl restart zabbix-agent
 
@@ -102,7 +102,7 @@ sudo systemctl restart zabbix-agent
 echo -e "\e[33mCloning repositories...\e[39m"
 cd ~/perf
 git clone https://github.com/mavi0/upgraded-rotary-telephone.git
-crontab upgraded-rotary-telephone/client/cronjobs
+sudo crontab upgraded-rotary-telephone/cronjobs
 
 echo -e "\e[33m$2\e[39m"
 ifconfig

@@ -3,6 +3,7 @@ import configparser
 import iperf3
 import json
 import logging
+import socket
 from subprocess import check_output
 from datetime import datetime
 from time import sleep
