@@ -10,11 +10,11 @@ echo -e "\e[33mInstalling required packages \e[39m"
 #wget "$1:5000/clone/sources.list"
 #sudo mv sources.list /etc/apt/sources.list
 
-wget wget https://repo.zabbix.com/zabbix/4.0/raspbian/pool/main/z/zabbix-release/zabbix-release_4.0-2+stretch_all.deb
-sudo dpkg -i zabbix-release_4.0-2+bionic_all.deb
+# wget wget https://repo.zabbix.com/zabbix/4.0/raspbian/pool/main/z/zabbix-release/zabbix-release_4.0-2+stretch_all.deb
+# sudo dpkg -i zabbix-release_4.0-2+bionic_all.deb
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y python3 python iperf3 python-pip python3-pip speedtest-cli golang-go autossh moreutils openvpn zabbix-agent git
+sudo apt install -y python3 python iperf3 python-pip python3-pip speedtest-cli golang-go autossh moreutils openvpn git
 sudo pip3 install iperf3 pingparsing jsonmerge
 sudo pip install yoctopuce
 
