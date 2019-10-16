@@ -1,8 +1,7 @@
 export PATH=$PATH:~/.local/bin
 #ps aux |grep python |grep -v 'SimpleHTTPServer' |awk '{print $2}' |xargs kill
 rm -f *.log
-python3 iperf.py
-python3 ping.py
-python3 speedtest.py
+rm -f *.json
+python3 main.py
 python yocto.py
-python3 send.py
+python3 bp_send.py

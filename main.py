@@ -10,14 +10,15 @@ time = datetime.now()
 server_hostname = ""
 api_port = ""
 
-iperf = {}
+iperf_json = {}
 ping_json = {}
 speedtest_json = {}
-
+api_port = ""
 
 def iperf(config_file, config_port):
 
     global server_hostname
+    global api_port
     config = configparser.ConfigParser()
     config.sections()
     config.read(config_file)
@@ -68,6 +69,7 @@ def save_json(json_export, file_name, log_dir):
 
 
 def iperfTCP():
+    global iperf_json
     print("Performing iperf TCP test.....")
     result = iperf("main.conf", 0)
     iperf_json = result
