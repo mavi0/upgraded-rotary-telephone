@@ -82,19 +82,19 @@ def iperfUDP():
     save_json(result, "iperfUDP.json", "iperfLogsUDP")
 
 
-try:
+# try:
     iperfTCP()
-except:
-    print("There was an error performing the TCP iPerf test. Proceeding...")
-    pass
+# except:
+    # print("There was an error performing the TCP iPerf test. Proceeding...")
+    # pass
 
-try:
+# try:
     iperfUDP()
-except:
-    print("There was an error performing the UDP iPerf test. Proceeding...")
-    pass
+# except:
+    # print("There was an error performing the UDP iPerf test. Proceeding...")
+    # pass
 
-try:
+# try:
     print("Complete!\n\nPerforming latency test....")
     ping_json_old = json.loads(check_output(["pingparsing", server_hostname]))
     ping_json_old[server_hostname]['jitter'] = ping_json_old[server_hostname]["rtt_max"] - ping_json_old[server_hostname]["rtt_min"]
@@ -104,19 +104,19 @@ try:
 
     save_json(ping_json, "ping.json", "pingLogs")
 
-except:
-    print("There was an error performing the latency test. Proceeding...")
-    pass
+# except:
+#     print("There was an error performing the latency test. Proceeding...")
+#     pass
 
-try:
+# try:
     print("Complete!\n\nPerforming speetest.net test....")
 
     speedtest_json = json.loads(check_output(["speedtest-cli", "--json"]))
     save_json(speedtest_json, "speedtest.json", "speedtestLogs")
 
-except:
-    print("There was an error performing the speedtest test. Proceeding...")
-    pass
+# except:
+#     print("There was an error performing the speedtest test. Proceeding...")
+#     pass
 
 send_json = jsonmerge.merge(ping_json, speedtest_json)
 send_json = jsonmerge.merge(send_json, iperf_json)
