@@ -83,36 +83,36 @@ def iperfUDP():
 
 
 # try:
-    iperfTCP()
+iperfTCP()
 # except:
-    # print("There was an error performing the TCP iPerf test. Proceeding...")
-    # pass
+# print("There was an error performing the TCP iPerf test. Proceeding...")
+# pass
 
 # try:
-    iperfUDP()
+# iperfUDP()
 # except:
-    # print("There was an error performing the UDP iPerf test. Proceeding...")
-    # pass
+# print("There was an error performing the UDP iPerf test. Proceeding...")
+# pass
 
 # try:
-    print("Complete!\n\nPerforming latency test....")
-    ping_json_old = json.loads(check_output(["pingparsing", server_hostname]))
-    ping_json_old[server_hostname]['jitter'] = ping_json_old[server_hostname]["rtt_max"] - ping_json_old[server_hostname]["rtt_min"]
-    # fix for zabbix. cant escape periods
-    json_hostname = "ping"
-    ping_json[json_hostname] = ping_json_old.pop(server_hostname)
+print("Complete!\n\nPerforming latency test....")
+ping_json_old = json.loads(check_output(["pingparsing", server_hostname]))
+ping_json_old[server_hostname]['jitter'] = ping_json_old[server_hostname]["rtt_max"] - ping_json_old[server_hostname]["rtt_min"]
+# fix for zabbix. cant escape periods
+json_hostname = "ping"
+ping_json[json_hostname] = ping_json_old.pop(server_hostname)
 
-    save_json(ping_json, "ping.json", "pingLogs")
+save_json(ping_json, "ping.json", "pingLogs")
 
 # except:
 #     print("There was an error performing the latency test. Proceeding...")
 #     pass
 
 # try:
-    print("Complete!\n\nPerforming speetest.net test....")
+print("Complete!\n\nPerforming speetest.net test....")
 
-    speedtest_json = json.loads(check_output(["speedtest-cli", "--json"]))
-    save_json(speedtest_json, "speedtest.json", "speedtestLogs")
+speedtest_json = json.loads(check_output(["speedtest-cli", "--json"]))
+save_json(speedtest_json, "speedtest.json", "speedtestLogs")
 
 # except:
 #     print("There was an error performing the speedtest test. Proceeding...")
