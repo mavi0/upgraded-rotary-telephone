@@ -4,8 +4,8 @@ mkdir iperfLogs
 mkdir pingLogs
 mkdir speedtestLogs
 
-killall python
-killall python3
+#killall python
+#killall python3
 rm -f *.log
 rm -f *.json
 python3 main.py

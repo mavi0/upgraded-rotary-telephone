@@ -9,7 +9,7 @@ def send_json(server_hostname, server_port, datafield, json_data):
 
 def send_json_yocto():
     config = configparser.ConfigParser()
-    config.sections()
+    config.sections()#
     config.read("main.conf")
     config.sections()
     server_hostname = config['DEFAULT']['hostname']
@@ -20,4 +20,5 @@ def send_json_yocto():
 
     send_json(server_hostname, api_port, "yocto", yocto_json)
 
+send_json_yocto()
 
